@@ -1,7 +1,5 @@
 from collections import Counter
-
-with open('wordle-answers-alphabetical.txt', 'r') as file:
-    possible_answers = file.read().splitlines()
+from wordle_bot import possible_answers
 
 def char_frequency(list):
     dict = Counter()

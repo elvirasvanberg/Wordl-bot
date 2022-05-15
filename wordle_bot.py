@@ -1,14 +1,14 @@
 import json
 import os, sys
 import random
+from word_score import score
+from collections import Counter
 
 with open('wordle-answers-alphabetical.txt', 'r') as file:
     possible_answers = file.read().splitlines()
 
 with open('wordle-allowed-guesses.txt', 'r') as file:
     allowed_guesses = file.read().splitlines()
-
-from collections import Counter
 
 def compare_words(query_word, answer_word):
     res = []
