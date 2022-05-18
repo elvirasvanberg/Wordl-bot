@@ -1,5 +1,8 @@
+from ast import While
 from collections import Counter
-from wordle_bot import possible_answers
+
+with open('wordle-answers-alphabetical.txt', 'r') as file:
+    possible_answers = file.read().splitlines()
 
 def char_frequency(list):
     dict = Counter()
@@ -25,24 +28,22 @@ def relative_char_frequency():
 def score(word):
     char_frequency_list = relative_char_frequency()
 
+    # remove duplicate, triplicate, etc. letters to give a more accurate score
+    letter_list = []
+    for c in word:
+        if c not in letter_list:
+            letter_list.append(c)
+
     score = 0
-    for letter in word:
+    for letter in letter_list:
         i = 0
-        if letter != char_frequency_list[i][0]:
+        while letter != char_frequency_list[i][0]:
             i += 1
         score += char_frequency_list[i][1]
-    
-    # take points off if there are multiple of the same letter
-    for a in range(5):
-        for b in range(5):
-            if word[a] == word[b] and a != b:
-                score -= 0.01
 
     return score
 
-def word_by_score():
-    word_list_and_score = [(word, score(word)) for word in possible_answers]
+def word_by_score(word_list):
+    word_list_and_score = [(word, score(word)) for word in word_list]
     word_list_by_score = sorted(word_list_and_score, key = lambda x: x[1], reverse = True)
-    return word_list_by_score[:20]
-
-print(word_by_score())
+    return word_list_by_score
