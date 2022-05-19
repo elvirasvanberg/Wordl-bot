@@ -28,7 +28,7 @@ def filter_words(possible_words, word, comparison_code):
     for w in possible_words:
         if compare_words(word, w) == comparison_code:
             possible_words_upd.append(w)
-
-    possible_words_upd_sorted = word_by_score(possible_words_upd)
-
-    return possible_words_upd_sorted
+        else:
+            pass
+        
+    return word_by_score(possible_words_upd)
