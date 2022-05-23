@@ -1,6 +1,3 @@
-with open('wordle-answers-alphabetical.txt', 'r') as file:
-    possible_answers = file.read().splitlines()
-
 def compare_words(query_word, answer_word):
     comparison_code = []
     pos_not_found = []
@@ -24,7 +21,7 @@ def compare_words(query_word, answer_word):
 def filter_words(possible_words, word, comparison_code):
     possible_words_upd = []
     for w in possible_words:
-        if compare_words(word, w) == comparison_code:
+        if compare_words(word, w) == comparison_code: # comparison_code ex 22001
             possible_words_upd.append(w)
         else:
             pass
