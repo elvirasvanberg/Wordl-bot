@@ -1,1 +1,0 @@
-#def evaluate_solver(possible_words, solver, starting_word = ''):
